@@ -1,4 +1,4 @@
-const imagensBase = new URL('../../imagens/', import.meta.url).href;
+const imagensBase = `${import.meta.env.BASE_URL}imagens/`;
 
 const frentesAtuacao = [
     {
@@ -36,7 +36,7 @@ const projetos = [
         titulo: 'Guardiões do Cerrado',
         categoria: 'Fauna • Monitoramento',
         texto: 'Projeto de monitoramento de mamíferos de médio e grande porte em áreas protegidas.',
-        imagem: `${imagensBase}lobo.png`,
+        imagem: `${imagensBase}lobo.webp`,
         alt: 'Ilustração de lobo-guará.',
         visualClasse: 'purple-gradient',
         badge: 'Em andamento',
@@ -47,7 +47,7 @@ const projetos = [
         titulo: 'Campos Vivos',
         categoria: 'Campos naturais • Aves',
         texto: 'Iniciativa voltada ao reconhecimento e valorização dos ambientes campestres do Cerrado.',
-        imagem: `${imagensBase}galito.jpg`,
+        imagem: `${imagensBase}galito.webp`,
         alt: 'Ilustração da ave galito.',
         visualClasse: 'dark-gradient',
         badge: 'Novas ações',
@@ -58,7 +58,7 @@ const projetos = [
         titulo: 'Flora do Cerrado',
         categoria: 'Flora • Pesquisa',
         texto: 'Levantamento educativo de espécies vegetais nativas e de ambientes sensíveis.',
-        imagem: `${imagensBase}lobelia.png`,
+        imagem: `${imagensBase}lobelia.webp`,
         alt: 'Ilustração de lobélia.',
         visualClasse: 'light-gradient',
         badge: 'Pesquisa ativa',
@@ -82,7 +82,7 @@ function gerarProjetos() {
     return projetos.map((projeto) => `
         <article class="project-card${projeto.reverso ? ' reverse' : ''}">
             <div class="project-visual ${projeto.visualClasse}">
-                <img src="${projeto.imagem}" alt="${projeto.alt}">
+                <img src="${projeto.imagem}" alt="${projeto.alt}" loading="lazy" decoding="async">
             </div>
             <div class="project-content">
                 <p class="project-tag">${projeto.categoria}</p>
@@ -109,7 +109,7 @@ export const templates = {
                     </div>
                 </div>
                 <figure class="hero-image">
-                    <img src="${imagensBase}cerrado-hero.jpg" alt="Ilustração minimalista de paisagem do Cerrado com vegetação, céu e silhueta de lobo-guará.">
+                    <img src="${imagensBase}cerrado-hero.webp" alt="Ilustração minimalista de paisagem do Cerrado com vegetação, céu e silhueta de lobo-guará." decoding="async" fetchpriority="high">
                 </figure>
             </div>
         </section>
