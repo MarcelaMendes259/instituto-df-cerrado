@@ -1,0 +1,17 @@
+{
+  "name": "instituto-df-cerrado",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm run optimize:images && vite",
+    "build": "npm run optimize:images && vite build",
+    "preview": "vite preview",
+    "optimize:images": "node scripts/optimize-images.mjs"
+  },
+  "devDependencies": {
+    "html-minifier-terser": "^7.2.0",
+    "sharp": "^0.34.3",
+    "vite": "^7.1.5"
+  }
+}
