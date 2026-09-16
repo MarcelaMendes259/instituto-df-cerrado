@@ -8,7 +8,6 @@ export function renderizarPagina(rota) {
     app.innerHTML = '';
     const conteudo = templates[rota] || templates.inicio;
     app.insertAdjacentHTML('beforeend', conteudo);
-    app.focus({ preventScroll: true });
 }
 
 export function obterRotaAtual() {
