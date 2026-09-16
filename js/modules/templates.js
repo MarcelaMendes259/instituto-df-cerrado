@@ -1,4 +1,10 @@
-const imagensBase = `${import.meta.env.BASE_URL}imagens/`;
+const viteEnv = import.meta.env;
+const usandoBuildVite = Boolean(viteEnv && viteEnv.BASE_URL);
+const imagensBase = usandoBuildVite ? `${viteEnv.BASE_URL}imagens/` : 'imagens/';
+
+function imagem(webp, original) {
+    return `${imagensBase}${usandoBuildVite ? webp : original}`;
+}
 
 const frentesAtuacao = [
     {
@@ -36,7 +42,7 @@ const projetos = [
         titulo: 'Guardiões do Cerrado',
         categoria: 'Fauna • Monitoramento',
         texto: 'Projeto de monitoramento de mamíferos de médio e grande porte em áreas protegidas, com foco em espécies emblemáticas do Cerrado.',
-        imagem: `${imagensBase}lobo.webp`,
+        imagem: imagem('lobo.webp', 'lobo.png'),
         alt: 'Ilustração de lobo-guará.',
         visualClasse: 'purple-gradient',
         badge: 'Em andamento',
@@ -52,7 +58,7 @@ const projetos = [
         titulo: 'Campos Vivos',
         categoria: 'Campos naturais • Aves',
         texto: 'Iniciativa voltada ao reconhecimento e valorização dos ambientes campestres do Cerrado, fundamentais para espécies especializadas.',
-        imagem: `${imagensBase}galito.webp`,
+        imagem: imagem('galito.webp', 'galito.jpg'),
         alt: 'Ilustração da ave galito.',
         visualClasse: 'dark-gradient',
         badge: 'Novas ações',
@@ -68,7 +74,7 @@ const projetos = [
         titulo: 'Flora do Cerrado',
         categoria: 'Flora • Pesquisa',
         texto: 'Levantamento educativo de espécies vegetais nativas e de ambientes sensíveis, com divulgação científica e incentivo à conservação.',
-        imagem: `${imagensBase}lobelia.webp`,
+        imagem: imagem('lobelia.webp', 'lobelia.png'),
         alt: 'Ilustração de lobélia.',
         visualClasse: 'light-gradient',
         badge: 'Pesquisa ativa',
@@ -84,7 +90,7 @@ const projetos = [
         titulo: 'Ciência no Parque',
         categoria: 'Educação • Uso público',
         texto: 'Atividades de educação ambiental e interpretação da natureza para aproximar estudantes, visitantes e comunidade das unidades de conservação locais.',
-        imagem: `${imagensBase}cerrado-hero.webp`,
+        imagem: imagem('cerrado-hero.webp', 'cerrado-hero.jpg'),
         alt: 'Ilustração de paisagem do Cerrado.',
         visualClasse: 'purple-gradient',
         badge: 'Educação ambiental',
@@ -180,7 +186,7 @@ export const templates = {
                     </div>
                 </div>
                 <figure class="hero-image">
-                    <img src="${imagensBase}cerrado-hero.webp" alt="Ilustração minimalista de paisagem do Cerrado com vegetação, céu e silhueta de lobo-guará." decoding="async" fetchpriority="high">
+                    <img src="${imagem('cerrado-hero.webp', 'cerrado-hero.jpg')}" alt="Ilustração minimalista de paisagem do Cerrado com vegetação, céu e silhueta de lobo-guará." decoding="async" fetchpriority="high">
                 </figure>
             </div>
         </section>
